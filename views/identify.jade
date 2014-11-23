@@ -1,0 +1,19 @@
+extends layout
+block content
+  h1= title
+  main
+    form(action="./verify", method="POST")
+      div
+        label Sosiaaliturvatunnus:
+        input(type="text", name="ssn", placeholder="SSN")
+      div
+        label Nimi:
+        input(type="text", name="cn", placeholder="Common name")
+      div
+        label Paluuosoite:
+        input(type="text", name="returnUri", value="#{tupas.returnUri}")
+      div
+        label Kyselytunniste:
+        input(type="text", name="stamp", value="#{tupas.stamp}")
+      div
+        input(type="submit", name="verify", value="Tunnistaudu")
