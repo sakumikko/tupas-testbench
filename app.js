@@ -11,8 +11,10 @@ var tupas = require('./routes/tupas');
 
 var app = express();
 
+process.env.PWD = process.cwd()
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(process.env.PWD , 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -22,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('node-compass')({mode: 'expanded'}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(process.env.PWD, 'public')));
 
 app.use('/', routes);
 app.use('/tupas', tupas);
