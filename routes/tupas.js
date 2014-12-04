@@ -1,6 +1,7 @@
 var express = require('express'),
     router = express.Router(),
     tupascrypt = require('../lib/tupascrypt'),
+    _ = require('lodash'),
     querystring = require('querystring');
 
 
@@ -63,8 +64,10 @@ router.post("/identify", function (req, res) {
 
 router.post("/verify", function (req, res) {
 
+    console.log(req.body.cn);
     var returnParams = tupascrypt.computeReturnParams(req.body.ssn, req.body.cn, req.body.stamp)
-    var queryParams = querystring.stringify(returnParams);
+    var queryParams = _.map(_.pairs(returnParams), function(p){return p[0] + "=" + escape(p[1]);}).join('&');
+    //var queryParams = querystring.stringify(returnParams);
     res.redirect(req.body.returnUri + '?' + queryParams);
 
 });
