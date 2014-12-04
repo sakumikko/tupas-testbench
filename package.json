@@ -14,9 +14,7 @@
     "debug": "~2.0.0",
     "jade": "~1.6.0",
     "node-compass": "0.2.3",
-    "crypto": "0.0.3",
     "moment": "~2.8.4",
-    "querystring": "~0.2.0",
     "underscore": "~1.7.0"
   }
 }
